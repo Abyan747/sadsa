@@ -100,5 +100,27 @@
       };
       document.body.appendChild(script);
     </script>
+    <script>
+      // Listen for messages from React
+      window.addEventListener("message", function (event) {
+        const data = event.data;
+    
+        if (data.user_name && data.sfID) {
+          console.log("Received from React:", data);
+    
+          // Replace "GameObjectName" and "SetUserData" with your Unity setup
+          if (unityInstance) {
+            unityInstance.SendMessage(
+              "GameObjectName", // Replace with the name of your Unity game object
+              "SetUserData",    // Replace with the method name in Unity
+              JSON.stringify(data)
+            );
+          }
+        } else {
+          console.error("Invalid data received:", data);
+        }
+      });
+    </script>
+    
   </body>
 </html>
