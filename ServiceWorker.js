@@ -1,9 +1,9 @@
 const cacheName = "Abyan corp-Witch Runner-0.1.0";
 const contentToCache = [
-    "Build/NEB4.loader.js",
-    "Build/NEB4.framework.js",
-    "Build/NEB4.data",
-    "Build/NEB4.wasm",
+    "Build/NEB6.loader.js",
+    "Build/NEB6.framework.js",
+    "Build/NEB6.data",
+    "Build/NEB6.wasm",
     "TemplateData/style.css"
 
 ];

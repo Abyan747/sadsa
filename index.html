@@ -22,7 +22,7 @@
     <script>
       window.addEventListener("load", function () {
         if ("serviceWorker" in navigator) {
-          // navigator.serviceWorker.register("ServiceWorker.js");
+          navigator.serviceWorker.register("ServiceWorker.js");
         }
       });
 
@@ -57,12 +57,12 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/NEB4.loader.js";
+      var loaderUrl = buildUrl + "/NEB6.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/NEB4.data",
-        frameworkUrl: buildUrl + "/NEB4.framework.js",
-        codeUrl: buildUrl + "/NEB4.wasm",
+        dataUrl: buildUrl + "/NEB6.data",
+        frameworkUrl: buildUrl + "/NEB6.framework.js",
+        codeUrl: buildUrl + "/NEB6.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Abyan corp",
         productName: "Witch Runner",
@@ -89,7 +89,6 @@
 
       var script = document.createElement("script");
       script.src = loaderUrl;
-      let unityInstance = null;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
@@ -101,27 +100,5 @@
       };
       document.body.appendChild(script);
     </script>
-    <script>
-      // Listen for messages from React
-      window.addEventListener("message", function (event) {
-        const data = event.data;
-    
-        if (data.user_name && data.sfID) {
-          console.log("Received from React:", data);
-    
-          // Replace "GameObjectName" and "SetUserData" with your Unity setup
-          if (unityInstance) {
-            unityInstance.SendMessage(
-              "GameOver_Restart", // Replace with the name of your Unity game object
-              "SetUserInfo",    // Replace with the method name in Unity
-              JSON.stringify(data)
-            );
-          }
-        } else {
-          console.error("Invalid data received:", data);
-        }
-      });
-    </script>
-    
   </body>
 </html>
