@@ -22,7 +22,7 @@
     <script>
       window.addEventListener("load", function () {
         if ("serviceWorker" in navigator) {
-          navigator.serviceWorker.register("ServiceWorker.js");
+          // navigator.serviceWorker.register("ServiceWorker.js");
         }
       });
 
@@ -89,6 +89,7 @@
 
       var script = document.createElement("script");
       script.src = loaderUrl;
+      let unityInstance = null;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
@@ -111,8 +112,8 @@
           // Replace "GameObjectName" and "SetUserData" with your Unity setup
           if (unityInstance) {
             unityInstance.SendMessage(
-              "GameObjectName", // Replace with the name of your Unity game object
-              "SetUserData",    // Replace with the method name in Unity
+              "GameOver_Restart", // Replace with the name of your Unity game object
+              "SetUserInfo",    // Replace with the method name in Unity
               JSON.stringify(data)
             );
           }
